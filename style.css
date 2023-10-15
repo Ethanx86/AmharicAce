@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    background-color: #FFFDD0;
+}
+
+
+* {
+    font-family: 'Courier';
+}
+
+*[r] {
+    color: #b7111b;
+}

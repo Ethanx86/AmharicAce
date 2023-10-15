@@ -4,6 +4,8 @@ class PageTitle extends HTMLElement{
     }
 
     connectedCallback() {
+      const arrays = this.innerHTML.split('<SPLIT>');
+      console.log(arrays);
         this.innerHTML = `
           <div style='border-style:none none solid none;border-width:2px;top:0px;position:fixed;width:100%;margin-left:5px;margin-top:2px;text-align:center;'>
             <image src="./Logo.png"></image>

@@ -30,14 +30,26 @@ class Link extends HTMLElement{
   }
 
   connectedCallback(){
-    this.innerHTML = `
-      <a href="${this.href}" style="text-decoration: none;" r>
-        <b>${this.innerHTML}</b>
-      </a>
-    `;
+    const a = document.createElement('a');
+    const b = document.createElement('b');
+    a.appendChild(b);
+    this.appendChild(a);
+    a.href = this.href;
+    this.a = a;
   }
 
-  attributeChangedCallback=(name, oldValue, newValue)=>name==='href'?this.querySelector('a').setAttribute('href',newValue):this.querySelector('a').href=this.href;
+  attributeChangedCallback(name, _, newValue) {
+    if (name === 'href') {
+      this.a.setAttribute('href', newValue);
+    }
+  }
+}
+
+class MobilePhone extends HTMLElement{
+  constructor(){
+    super();
+  }
 }
 customElements.define('page-title', PageTitle);
 customElements.define('custom-link', Link);
+customElements.define('mobile-phone', MobilePhone);

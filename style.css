@@ -13,6 +13,10 @@ body {
     color: #b7111b;
 }
 
+*[r|true] {
+    color: #b7111b;
+}
+
 button {
     background-color: #00000000;
     border: none;

@@ -36,6 +36,7 @@ class Link extends HTMLElement{
     this.appendChild(a);
     a.href = this.href;
     this.a = a;
+    this.a.r = true;
   }
 
   attributeChangedCallback(name, _, newValue) {

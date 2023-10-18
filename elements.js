@@ -30,13 +30,7 @@ class Link extends HTMLElement{
   }
 
   connectedCallback(){
-    const a = document.createElement('a');
-    const b = document.createElement('b');
-    a.appendChild(b);
-    this.appendChild(a);
-    a.href = this.href;
-    this.a = a;
-    this.a.r = true;
+    this.innerHTML = `<a r><b>${this.innerHTML}</b></a>`;
   }
 
   attributeChangedCallback(name, _, newValue) {

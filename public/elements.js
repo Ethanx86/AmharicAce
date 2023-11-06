@@ -17,6 +17,8 @@ class PageTitle extends HTMLElement{
           <div style='top:0px;position:fixed;width:${innerWidth - 10}px;margin-right:5px;margin-top:2px;height:28px;text-align:right;font-size:28px;'>
             ${after}
           </div>
+          <br>
+          <div style='height:28px'></div>
         `;
     }
 }

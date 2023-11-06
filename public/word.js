@@ -1,4 +1,4 @@
-class Word {
+class Word extends HTMLElement{
     constructor(){
         super();
     }
@@ -6,11 +6,17 @@ class Word {
     connectedCallback(){
         const before = this.innerHTML.split('<meaning>')[0];
         const after = this.innerHTML.split('<meaning>')[1];
-        document.write(before);
         this.innerHTML = `<details>
-            <summary>${before}</summary>
+            <summary style='summary::-webkit-details-marker:display:none;list-style:none;'>${before}</summary>
             ${after}
         </details>`;
+        this.childNodes[0].addEventListener('mouseover', () => {
+            this.childNodes[0].open = true;
+        });
+
+        this.childNodes[0].addEventListener('mouseleave', () => {
+            this.childNodes[0].open = false;
+        });
     }
 }
 

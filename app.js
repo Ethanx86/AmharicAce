@@ -2,10 +2,11 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
-const port = 80;
-
+app.use(express.static('public'));
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + 'public/index.htm')
+    res.sendFile(__dirname + '\\public\\index.htm');
 });
 
-server.listen()
+server.listen(80, () => {
+    console.log('A  NEW user connected');
+});

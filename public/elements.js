@@ -32,12 +32,12 @@ class Link extends HTMLElement{
   }
 
   connectedCallback(){
-    this.innerHTML = `<a r><b>${this.innerHTML}</b></a>`;
+    this.innerHTML = `<b r>${this.innerHTML}</b>`;
   }
 
   attributeChangedCallback(name, _, newValue) {
     if (name === 'href') {
-      this.a.setAttribute('href', newValue);
+      this.onclick = () => {open(newValue)};
     }
   }
 }

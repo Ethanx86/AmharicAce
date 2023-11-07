@@ -38,3 +38,6 @@ button {
     padding: 15px;
 }
 
+page-title {
+    overflow: unset;
+}

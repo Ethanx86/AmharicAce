@@ -2,7 +2,6 @@ class PageTitle extends HTMLElement{
     constructor(){
         super();
     }
-
     connectedCallback() {
       const before = this.innerHTML.split('<split>')[0];
       const after = this.innerHTML.split('<split>')[1];
@@ -26,27 +25,37 @@ class Link extends HTMLElement{
   constructor(){
     super();
   }
-
   static get observedAttributes() {
     return ['href'];
   }
-
   connectedCallback(){
     this.innerHTML = `<b r>${this.innerHTML}</b>`;
   }
-
   attributeChangedCallback(name, _, newValue) {
     if (name === 'href') {
       this.onclick = () => {open(newValue)};
     }
   }
 }
-
-class MobilePhone extends HTMLElement{
+class Image extends HTMLElement{
   constructor(){
     super();
+  }
+  static getObservedAttributes(){
+    return ['href', 'src'];
+  }
+  connectedCallback(){
+    this.appendChild(document.createElement('img'));
+    this.onclick = () => {alert('click')};
+  }
+  attributeChangedCallback(name, _, newValue){
+    if(name == 'href'){
+      this.onclick = () => {open(newValue)};
+    } else if(name == 'src'){
+      this.childNodes[0].src = newValue;
+    }
   }
 }
 customElements.define('page-title', PageTitle);
 customElements.define('custom-link', Link);
-customElements.define('mobile-phone', MobilePhone);
+customElements.define('img-link', Image);

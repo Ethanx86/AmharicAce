@@ -7,6 +7,4 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '\\public\\index.htm');
 });
 
-server.listen(80, () => {
-    console.log('A  NEW user connected');
-});
+server.listen(80, () => {});

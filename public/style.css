@@ -41,3 +41,7 @@ button {
 page-title {
     overflow: unset;
 }
+
+form {
+    text-align: center;
+}

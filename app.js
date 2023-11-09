@@ -16,11 +16,21 @@ app.use(express.urlencoded({extended: true}));
 
 app.post('/login', (req, res) => {
     const formData = req.body;
-    console.log('Received form data:', formData);
-    res.send('Form data received');
+    const json = JSON.parse(fs.readFileSync('./database.json').toString());
+    Object.keys(json).forEach((key) => {
+        if(json[key].username == formData.username && json[key].password == formData.password){
+            res.sendFile(__dirname + '\\public\\learner-home.htm');
+        }
+    });
 });
 
 app.post('/signup', (req, res) => {
     const formData = req.body;
-    console.log(fs.readFileSync('./database.json'));
+    const json = JSON.parse(fs.readFileSync('./database.json').toString());
+    json[Object.keys(json).length] = {
+        'username': formData.username,
+        'password': formData.password
+    };
+    fs.writeFile('database.json', JSON.stringify(json), {}, () => {});
+    res.sendFile(__dirname + '\\public\\learner-home.htm');
 });

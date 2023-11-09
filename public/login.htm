@@ -3,17 +3,18 @@
     <head>
         <link rel="stylesheet" href="./style.css">
         <title>Log In</title>
-        <link rel="icon" type="image/x-icon" href="./Logo.png">
+        <link rel="icon" type="image/x-icon" href="assets/images/Logo.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <page-title><split></page-title>
-        <form class="col-2" style="margin-left:auto;margin-right:auto;">
+        <form class="col-2" style="margin-left:auto;margin-right:auto;" action="/login" method="POST" id="login">
             <input type="text" name="username" placeholder="Username" style="font-size: 24px;"><br>
             <input type="password" name="password" placeholder="Password" style="font-size: 24px"><br>
             <center><input type="submit" style="font-size: 24px"></center>
         </form>
         <script src="./elements.js"></script>
         <script src="./responsive.js"></script>
+        <script src="./forms.js"></script>
     </body>
 </html>

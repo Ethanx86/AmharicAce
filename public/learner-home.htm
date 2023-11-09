@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./style.css">
+        <title>Amharic Ace</title>
+        <link rel="icon" type="image/x-icon" href="assets/images/Logo.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <page-title class="main-title"><split></page-title>
+            <svg id="svgContainer" width="300" height="300">
+                <path id="myPath" d="M10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80" stroke="black" fill="transparent"/>
+                <circle id="myElement" cx="10" cy="80" r="5" fill="red" draggable="true"/>
+              </svg>              
+        <script src="elements.js"></script>
+        <script src="responsive.js"></script>
+        <script>
+            const element = document.getElementById('myElement');
+            const path = document.getElementById('myPath');
+            let isDragging = false;
+            let draggingSpeed = 7; // Adjust this value for different speeds
+          
+            element.addEventListener('mousedown', (e) => {
+              isDragging = true;
+              updatePosition(e);
+            });
+          
+            document.addEventListener('mouseup', () => {
+              isDragging = false;
+            });
+          
+            function updatePosition(e) {
+              if (isDragging) {
+                const { clientX, clientY } = e;
+                const pathLength = path.getTotalLength();
+                const point = path.getPointAtLength((clientX / window.innerWidth) * pathLength * draggingSpeed);
+          
+                element.setAttribute('cx', point.x);
+                element.setAttribute('cy', point.y);
+              }
+          
+              requestAnimationFrame(() => updatePosition(e));
+            }
+          
+            document.addEventListener('mousemove', updatePosition);
+          </script>
+          
+                         
+    </body>
+</html>

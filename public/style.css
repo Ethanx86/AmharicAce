@@ -45,3 +45,15 @@ page-title {
 form {
     text-align: center;
 }
+
+input{
+    background-color: #00000000;
+    border-color: #00000000;
+    outline: none;
+}
+
+.login-form {
+    border-radius: 5px;
+    border-color: black;
+    border-style: solid solid solid solid;
+}

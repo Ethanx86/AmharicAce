@@ -8,7 +8,7 @@ class PageTitle extends HTMLElement {
     this.innerHTML = '';
     this.innerHTML = `
       <div style='top:0px;position:fixed;width:100%;margin-left:5px;margin-top:2px;text-align:center;overflow-y:visible;'>
-        <image src="./Logo.png"></image>
+        <image src="./assets/images/Logo.png"></image>
         <div style='top:0px;position:fixed;width:10px;margin-right:5px;margin-top:2px;height:28px;text-align:right;font-size:28px;'>
           ${before}
         </div>
@@ -28,7 +28,7 @@ class PageTitle extends HTMLElement {
 
     const pageTitle = `
       <div style='top:0px;position:fixed;width:100%;margin-left:5px;margin-top:2px;text-align:center;overflow-y:visible;'>
-        <image src="./Logo.png"></image>
+        <image src="assets/images/Logo.png"></image>
         <div style='top:0px;position:fixed;width:10px;margin-right:5px;margin-top:2px;height:28px;text-align:right;font-size:28px;'>
           ${before}
         </div>

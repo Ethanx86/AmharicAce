@@ -9,11 +9,8 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '\\public\\index.htm');
 });
-
 server.listen(80, () => {});
-
 app.use(express.urlencoded({extended: true}));
-
 app.post('/login', (req, res) => {
     const formData = req.body;
     const json = JSON.parse(fs.readFileSync('./database.json').toString());
@@ -23,7 +20,6 @@ app.post('/login', (req, res) => {
         }
     });
 });
-
 app.post('/signup', (req, res) => {
     const formData = req.body;
     const json = JSON.parse(fs.readFileSync('./database.json').toString());

@@ -5,6 +5,7 @@ const server = http.createServer(app);
 const crypto = require('crypto');
 const cipher = crypto.createHash('sha256');
 const fs = require('fs');
+const username = require(__dirname + '\\username.js');
 app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '\\public\\index.htm');

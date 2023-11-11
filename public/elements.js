@@ -41,11 +41,9 @@ class PageTitle extends HTMLElement {
       <div style='height:14px;border-style:none none solid none;border-width:2px;position:relative;'></div>
       <div style='height:28px;'></div>
     `;
-
     this.innerHTML = pageTitle;
   }
 }
-
 class Link extends HTMLElement{
   constructor(){
     super();

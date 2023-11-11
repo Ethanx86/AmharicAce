@@ -44,14 +44,35 @@ class DrawingElement extends HTMLElement{
 
     #checkDrawingElementData(){
         if(this.drawingElementData.char && this.drawingElementData.color && this.drawingElementData.size){
-
+            this.addEventListener('mousemove', (e) => {
+                if(this.#dragging){
+                    const x = e.clientX - canvas.getBoundingClientRect().left;
+                    const y = e.clientY - canvas.getBoundingClientRect().top;
+                    
+                }
+            });
         }
     }
 
     attributeChangedCallback(name, _, newValue){
         switch(name){
             case 'char':
-                this.drawingElementData
+                this.drawingElementData.char = newValue;
+                this.#checkDrawingElementData();
+                break;
+            case 'width':
+                this.canvas.style.width = parseInt(newvalue);
+                break;
+            case 'height':
+                this.canvas.style.height = parseInt(newValue);
+                break;
+            case 'color':
+                this.drawingElementData.color = newValue;
+                this.#checkDrawingElementData();
+                break;
+            case 'size':
+                this.drawingElementData.size = parseFloat(newValue);
+                this.#checkDrawingElementData();
         }
     }
 }

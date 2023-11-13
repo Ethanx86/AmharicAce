@@ -1,5 +1,4 @@
-'use-strict';
-const canvas = document.querySelector('canvas[class="drawing"]');
+/*const canvas = document.querySelector('canvas[class="drawing"]');
 const ctx = canvas.getContext('2d');
 const size = 7;
 const color = '#b7111b';
@@ -17,7 +16,7 @@ canvas.addEventListener('mousemove', (e) => {
         ctx.arc(x, y, size / 2, 0, 2 * Math.PI);
         ctx.fill();
     }
-});
+});*/
 class DrawingElementData {
     constructor(){
         this.char = undefined;
@@ -35,7 +34,7 @@ class DrawingElement extends HTMLElement{
     }
 
     connectedCallback(){
-        this.canvas = document.createElement('canvas');
+        this.ctx = this.canvas.getContext('2d');
         this.appendChild(this.canvas);
     }
     static get observedAttributes(){
@@ -44,27 +43,31 @@ class DrawingElement extends HTMLElement{
 
     #checkDrawingElementData(){
         if(this.drawingElementData.char && this.drawingElementData.color && this.drawingElementData.size){
-            this.addEventListener('mousemove', (e) => {
+            this.canvas.addEventListener('mousemove', (e) => {
                 if(this.#dragging){
                     const x = e.clientX - canvas.getBoundingClientRect().left;
                     const y = e.clientY - canvas.getBoundingClientRect().top;
-                    
+                    this.ctx.fillStyle = this.drawingElementData.color;
+                    this.ctx.arc(x, y, this.drawingElementData.size, 0, 2 * Math.PI);
+                    this.ctx.fill();
                 }
             });
         }
     }
 
     attributeChangedCallback(name, _, newValue){
+        this.canvas = this.canvas ? this.canvas : document.createElement('canvas');
+        this.ctx = this.ctx ? this.ctx : this.canvas.getContext('2d');
         switch(name){
             case 'char':
                 this.drawingElementData.char = newValue;
                 this.#checkDrawingElementData();
                 break;
             case 'width':
-                this.canvas.style.width = parseInt(newvalue);
+                this.canvas.width = parseInt(newValue);
                 break;
             case 'height':
-                this.canvas.style.height = parseInt(newValue);
+                this.canvas.height = parseInt(newValue);
                 break;
             case 'color':
                 this.drawingElementData.color = newValue;
@@ -76,3 +79,4 @@ class DrawingElement extends HTMLElement{
         }
     }
 }
+customElements.define('draw-letter', DrawingElement);

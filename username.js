@@ -12,3 +12,5 @@ function capitalize(s){
 function generateUsername(){
     return capitalize(adjectives[Math.round(Math.random() * (adjectives.length - 1))]) + capitalize(nouns[Math.round(Math.random() * (nouns.length - 1))]) + generateNumber();
 }
+
+console.log(generateUsername());

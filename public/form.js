@@ -1,13 +1,12 @@
 document.getElementById('login').addEventListener('submit', (ev) => {
     ev.preventDefault();
+    sessionStorage.setItem('username', document.forms['login']['username'].value);
     fetch('/login', {
         method: 'POST',
         body: formData,
       }).then((response) => {
         if (response.ok) {
-            console.log('Form submitted successfully.');
         } else {
-            console.error('Form submission failed.');
       }
     }).catch((error) => {
         console.error('Error:', error);
@@ -16,16 +15,18 @@ document.getElementById('login').addEventListener('submit', (ev) => {
 
 document.getElementById('signup').addEventListener('submit', (ev) => {
     ev.preventDefault();
+    sessionStorage.setItem('username', document.forms['signup']['username'].value);
     fetch('/signup', {
         method: 'POST',
         body: formData,
       }).then((response) => {
         if (response.ok) {
-            console.log('Form submitted successfully.');
         } else {
-            console.error('Form submission failed.');
       }
     }).catch((error) => {
         console.error('Error:', error);
     });
 });
+
+const socket = io();
+socket.on('taken', _=>alert('This username is alredy taken.\nPlease choose another one'));

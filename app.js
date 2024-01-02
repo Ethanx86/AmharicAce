@@ -46,12 +46,19 @@ app.post('/signup', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-    socket.on('curriculum', (username) => {
-        
+    socket.on('curriculum', (username) => {    
+        console.log(username);
         Object.keys(json).forEach((k) => {
-            if(json[k].username == username){
-                socket.emit('lessons', 'h'/*curriculum[json[k].number]*/);
+            if(json[k].username === username){
+                socket.emit('lessons', curriculum[json[k].number]);
             }
-        })
+        });
     });
 });
+app.use(express.static('public', {
+    setHeaders: (res, path, stat) => {
+        if (path.endsWith('.js')) {
+            res.set('Content-Type', 'text/javascript');
+        }
+    }
+}));

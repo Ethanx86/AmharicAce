@@ -1,6 +1,8 @@
 document.getElementById('login').addEventListener('submit', (ev) => {
     ev.preventDefault();
-    sessionStorage.setItem('username', document.forms['login']['username'].value);
+    const formData = new FormData(document.getElementById('login'));
+    const username = formData.get('username');
+    sessionStorage.setItem('username', username);
     fetch('/login', {
         method: 'POST',
         body: formData,
@@ -14,8 +16,9 @@ document.getElementById('login').addEventListener('submit', (ev) => {
 });
 
 document.getElementById('signup').addEventListener('submit', (ev) => {
-    ev.preventDefault();
-    sessionStorage.setItem('username', document.forms['signup']['username'].value);
+    const formData = new FormData(document.getElementById('signup'));
+    const username = formData.get('username');
+    sessionStorage.setItem('username', username);
     fetch('/signup', {
         method: 'POST',
         body: formData,

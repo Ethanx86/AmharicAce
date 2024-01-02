@@ -20,39 +20,35 @@ server.listen(80, () => {});
 app.use(express.urlencoded({extended: true}));
 app.post('/login', (req, res) => {
     const formData = req.body;
-    Object.keys(json).forEach((key) => {
-        if(json[key].username == formData.username && json[key].password == formData.password){
-            res.sendFile(__dirname + '\\public\\learner-home.htm');
-        }
-    });
+    if(json[formData.username]){
+        res.sendFile(__dirname + '\\public\\learner-home.htm');
+    }
 });
 app.post('/signup', (req, res) => {
     const formData = req.body;
-    
     var found = false;
-    Object.keys(json).forEach(k=>found=json[k].username == formData.username);
+    Object.keys(json).forEach(k=>found=K==formData.username);
     if(found){
         io.emit('taken');
     } else {
-        json[Object.keys(json).length] = {
-            'username': formData.username,
+        json[formData.username] = {
             'password': formData.password,
             'number': 0
         };
-        users[req.sessionID] = (json.length - 1).toString();
         fs.writeFile('database.json', JSON.stringify(json), {}, () => {});
         res.sendFile(__dirname + '\\public\\learner-home.htm');
     } 
 });
 
 io.on('connection', (socket) => {
-    socket.on('curriculum', (username) => {    
-        console.log(username);
-        Object.keys(json).forEach((k) => {
-            if(json[k].username === username){
-                socket.emit('lessons', curriculum[json[k].number]);
-            }
-        });
+    var user;
+    socket.on('curriculum', () => {
+        socket.emit('lessons', users[socket.id]);
+    });
+
+    socket.on('username', (name) => {
+        users[socket.id] = name;
+        console.log(users);
     });
 });
 app.use(express.static('public', {

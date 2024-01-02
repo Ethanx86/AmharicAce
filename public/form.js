@@ -1,8 +1,9 @@
+var socket = io();
 document.getElementById('login').addEventListener('submit', (ev) => {
+  const formData = new FormData(document.getElementById('login'));
+  const username = formData.get('username');
+  socket.emit('username', username);
     ev.preventDefault();
-    const formData = new FormData(document.getElementById('login'));
-    const username = formData.get('username');
-    sessionStorage.setItem('username', username);
     fetch('/login', {
         method: 'POST',
         body: formData,
@@ -18,7 +19,7 @@ document.getElementById('login').addEventListener('submit', (ev) => {
 document.getElementById('signup').addEventListener('submit', (ev) => {
     const formData = new FormData(document.getElementById('signup'));
     const username = formData.get('username');
-    sessionStorage.setItem('username', username);
+    socket.emit('username', username);
     fetch('/signup', {
         method: 'POST',
         body: formData,
@@ -30,6 +31,4 @@ document.getElementById('signup').addEventListener('submit', (ev) => {
         console.error('Error:', error);
     });
 });
-
-const socket = io();
 socket.on('taken', _=>alert('This username is alredy taken.\nPlease choose another one'));

@@ -59,9 +59,7 @@ a {
     user-select: none;
     text-decoration: none;
 }
-
-/* Stylize menu items */
-.change{
-    display: block;
+/* Stylize .change <br> tags. */
+.change {
+    display: none;
 }
-

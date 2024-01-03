@@ -1,72 +1,67 @@
-body {
-    margin: 0;
-    background-color: #FFFDD0;
-}
+/* Define coulums. */
+.col-1 {width: 8.33;}
+.col-2 {width: 16.67;}
+.col-3 {width: 25.00;}
+.col-4 {width: 33.33;}
+.col-5 {width: 41.67;}
+.col-6 {width: 50.00;}
+.col-7 {width: 58.33;}
+.col-8 {width: 66.67;}
+.col-9 {width: 75.00;}
+.col-10 {width: 83.33;}
+.col-11 {width: 91.67;}
+.col-12 {width: 100.00;}
 
-
-* {
-    font-family: 'Courier';
-    user-select: none;
-}
-
-*[r] {
-    color: #b7111b;
-}
-
-*[r|true] {
-    color: #b7111b;
-}
-
-button {
-    background-color: #00000000;
-    border: none;
-}
-.col-1 {width: 8.33%;}
-.col-2 {width: 16.66%;}
-.col-3 {width: 25%;}
-.col-4 {width: 33.33%;}
-.col-5 {width: 41.66%;}
-.col-6 {width: 50%;}
-.col-7 {width: 58.33%;}
-.col-8 {width: 66.66%;}
-.col-9 {width: 75%;}
-.col-10 {width: 83.33%;}
-.col-11 {width: 91.66%;}
-.col-12 {width: 100%;}
+/* Set some basics for coloums - float and padding. */
 [class*="col-"] {
     float: left;
     padding: 15px;
 }
 
-page-title {
-    overflow: unset;
+/* Define page header style. */
+.page-header {
+    padding: 15px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
 }
 
-form {
-    text-align: center;
+/* Define background color and margin. */
+body {
+    margin: 0;
+    background-color: #FFFDD0;
 }
 
-input{
-    background-color: #00000000;
-    border-color: #00000000;
-    outline: none;
+/* Set the global properties. */
+* {
+    font-family: 'Courier';
+    overflow: hidden;
 }
 
-.login-form {
-    border-radius: 5px;
-    border-color: black;
-    border-style: solid solid solid solid;
+/* Set some text's color to red. */
+*[r] {
+    color: #b7111b;
 }
 
-.drawing {
-    width: 300px;
-    height: 300px;
-    font-size: 100px;
-    text-align: center;
-    border-style: solid solid solid solid;
-    border-color: black;
+/* Add a beginning and end class for page headers */
+
+.beginning {
+    left: 0%;
 }
 
-canvas[class="drawing"] {
-    border-color: red;
+.end {
+    right: 15px;
+    position: absolute;
 }
+
+/* Stylize links. */
+a {
+    user-select: none;
+    text-decoration: none;
+}
+
+/* Stylize menu items */
+.change{
+    display: block;
+}
+

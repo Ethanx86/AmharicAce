@@ -3,15 +3,27 @@
         <!-- Set stylesheet, viewport and title. -->
         <title>Amharic Ace</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="home.css">
         <meta name="viewport" content="width=device-width," initial-scale="1.0">
     </head>
     <body>
         <!-- Page header. -->
-        <h1 class="page-header" class="topnav">
+        <h1 class="page-header" id="topnav">
             <img src="assets/images/Logo.png" class="before">
             <span class="middle" r>Amharic Ace</span>
-            <br class="change">
-            <span class="end"><center class="change"><a r href="login.htm" class="topnav">Login</a><br class="change"> <a r class="topnav">Sign Up</a></center></span>
+            <p style="display:none" id="page-name">HOME</p>
+            <span class="end">
+                <a r href="login.htm">Login</a>  <a href="signup.htm" r>Sign Up</a>
+            </span>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        </h1>
+        <h1 class="page-header" id="responsive">
+            <img src="assets/images/Logo.png" class="before">
+            <span class="middle" r>Amharic Ace</span>
+            <br>
+            <span>
+                <a r href="login.htm" class="middle">Login</a><br><a href="signup.htm" r class="middle">Sign Up</a>
+            </span>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         </h1>
         <!-- Import scripts -->
